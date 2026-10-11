@@ -1,19 +1,51 @@
 /* assets/css/style.css */
+:root {
+    --nursery-green: #15803d;
+    --heritage-gold: #d4af37;
+}
+
 .glass-card {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
+
 .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
     height: 6px;
 }
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
+
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #16a34a;
+    background: var(--nursery-green);
     border-radius: 10px;
 }
-.quiz-step.hidden { display: none; }
+
+.quiz-step.hidden {
+    display: none;
+}
+
+img {
+    transition: transform 0.4s ease;
+}
+
+.group:hover img {
+    transform: scale(1.08);
+}
+
+.heritage-border {
+    border: 2px solid var(--heritage-gold);
+}
+
+.heritage-text {
+    color: var(--heritage-gold);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}

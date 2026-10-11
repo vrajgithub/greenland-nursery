@@ -1,59 +1,88 @@
 // assets/js/data.js
+const contactConfig = {
+    email: "info@greenlandnurseryofficial.com",
+    phone: "+91 99999 88888",
+    address: "7-1, 621/11, beside ESI hospital, BK Guda, Sanjeeva Reddy Nagar, Hyderabad, Telangana 500038, India",
+    established: "1985",
+    city: "Hyderabad"
+};
+
 const plantsData = [
     { 
         id: '1', name: 'Monstera Deliciosa', scientific: 'Monstera deliciosa', category: 'indoor', 
-        price: '$34.99', difficulty: 'Easy Care', light: 'Bright Indirect', watering: 'Weekly', 
+        price: '₹650/-', difficulty: 'Easy Care', light: 'Bright Indirect', watering: 'Weekly', 
         salesCount: 1250, petFriendly: false, 
         image: 'https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=800&q=80', 
-        description: 'Famous for its distinctive leaf split fenestrations.' 
+        description: 'Commonly known as the "Swiss Cheese Plant", it thrives beautifully in the Hyderabad climate.' 
     },
     { 
         id: '2', name: 'Fiddle Leaf Fig', scientific: 'Ficus lyrata', category: 'indoor', 
-        price: '$49.99', difficulty: 'Intermediate', light: 'Bright Light', watering: 'Weekly', 
+        price: '₹950/-', difficulty: 'Intermediate', light: 'Bright Light', watering: 'Weekly', 
         salesCount: 980, petFriendly: false, 
         image: 'https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=800&q=80', 
-        description: 'Bold, architectural violin-shaped leaves.' 
+        description: 'A premium statement plant that adds a touch of luxury to any modern home.' 
     },
     { 
-        id: '3', name: 'Snake Plant', scientific: 'Sansevieria', category: 'indoor', 
-        price: '$24.99', difficulty: 'Beginner', light: 'Low to Medium', watering: 'Bi-weekly', 
+        id: '3', name: 'Snake Plant (Laurentii)', scientific: 'Sansevieria', category: 'indoor', 
+        price: '₹250/-', difficulty: 'Beginner', light: 'Low to Medium', watering: 'Bi-weekly', 
         salesCount: 890, petFriendly: false, 
         image: 'https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=800&q=80', 
-        description: 'Extremely resilient and air purifying.' 
+        description: 'The ultimate "hard to kill" plant. Perfect for purifying indoor air.' 
     },
     { 
-        id: '4', name: 'Golden Pothos', scientific: 'Epipremnum aureum', category: 'indoor', 
-        price: '$18.99', difficulty: 'Beginner', light: 'Any Light', watering: 'Weekly', 
+        id: '4', name: 'Golden Pothos (Money Plant)', scientific: 'Epipremnum aureum', category: 'indoor', 
+        price: '₹180/-', difficulty: 'Beginner', light: 'Any Light', watering: 'Weekly', 
         salesCount: 850, petFriendly: false, 
         image: 'https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?auto=format&fit=crop&w=800&q=80', 
-        description: 'Fast-growing trailing vine.' 
+        description: 'A fast-growing favorite in Indian households, perfect for hanging pots.' 
     },
     { 
         id: '5', name: 'Peace Lily', scientific: 'Spathiphyllum', category: 'indoor', 
-        price: '$29.99', difficulty: 'Beginner', light: 'Low to Medium', watering: 'Weekly', 
+        price: '₹350/-', difficulty: 'Beginner', light: 'Low to Medium', watering: 'Weekly', 
         salesCount: 720, petFriendly: false, 
         image: 'https://images.unsplash.com/photo-1593691509543-c55fb32e7355?auto=format&fit=crop&w=800&q=80', 
-        description: 'Elegance with white spathe flowers.' 
+        description: 'Produces elegant white spathe flowers that bloom throughout the year.' 
     },
     { 
         id: '6', name: 'French Lavender', scientific: 'Lavandula', category: 'outdoor', 
-        price: '$22.50', difficulty: 'Easy Care', light: 'Full Sun', watering: 'Weekly', 
+        price: '₹450/-', difficulty: 'Moderate', light: 'Full Sun', watering: 'Weekly', 
         salesCount: 680, petFriendly: true, 
         image: 'https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&w=800&q=80', 
-        description: 'Fragrant perennial with soothing purple blooms.' 
+        description: 'Fragrant and soothing. Requires good sunlight and well-drained soil.' 
     },
     { 
-        id: '7', name: 'Red Maple', scientific: 'Acer palmatum', category: 'outdoor', 
-        price: '$89.00', difficulty: 'Intermediate', light: 'Full Sun', watering: 'Regular', 
+        id: '7', name: 'Japanese Red Maple', scientific: 'Acer palmatum', category: 'outdoor', 
+        price: '₹2,800/-', difficulty: 'Intermediate', light: 'Partial Sun', watering: 'Regular', 
         salesCount: 540, petFriendly: true, 
         image: 'https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=800&q=80', 
-        description: 'Stunning ornamental outdoor tree.' 
+        description: 'An exotic ornamental tree that adds a striking crimson hue to your garden.' 
     },
     { 
         id: '8', name: 'Aloe Vera', scientific: 'Aloe barbadensis', category: 'succulent', 
-        price: '$15.99', difficulty: 'Easy', light: 'Bright Light', watering: 'Bi-weekly', 
+        price: '₹150/-', difficulty: 'Easy', light: 'Bright Light', watering: 'Bi-weekly', 
         salesCount: 510, petFriendly: true, 
         image: 'https://images.unsplash.com/photo-1567333090944-104854a83625?auto=format&fit=crop&w=800&q=80', 
-        description: 'Medicinal and easy to care for.' 
+        description: 'A medicinal marvel. Very easy to maintain and propagate.' 
+    }
+];
+
+const servicesData = [
+    {
+        title: "Landscape Design",
+        icon: "pen-tool",
+        desc: "Professional balcony and terrace garden design tailored for Hyderabad homes.",
+        price: "₹2,500/-"
+    },
+    {
+        title: "Plant Doctor Clinic",
+        icon: "stethoscope",
+        desc: "Facing pest issues or yellow leaves? Get a digital checkup by our experts.",
+        price: "₹150/-"
+    },
+    {
+        title: "Potting & Repotting",
+        icon: "flower2",
+        desc: "We bring premium organic soil to refresh your old plant companions.",
+        price: "₹99/-"
     }
 ];
