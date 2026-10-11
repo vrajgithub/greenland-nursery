@@ -1,6 +1,6 @@
 // assets/js/main.js
 
-// 1. Wishlist Persistence
+// 1. Wishlist Logic
 let wishlist = JSON.parse(localStorage.getItem('greenland_wishlist')) || [];
 
 function toggleWishlist(id) {
@@ -122,9 +122,9 @@ function selectQuizOption(type, val) {
         const recommended = plantsData[0]; 
         document.getElementById('quiz-recommendation-card').innerHTML = `
             <img src="${recommended.image}" class="w-full h-40 object-cover rounded-xl mb-3">
-            <h4 class="font-bold text-slate-900">${recommended.name}</h4>
+            <h4 class="font-bold text-slate-900 text-sm">${recommended.name}</h4>
             <span class="text-lg font-bold text-nursery-900">${recommended.price}</span>
-            <button onclick="openModal('${recommended.id}')" class="w-full mt-3 py-2 rounded-lg bg-nursery-700 text-white font-bold text-xs">View Plant</button>
+            <button onclick="openModal('${recommended.id}')" class="w-full mt-3 py-2 rounded-lg bg-nursery-700 text-white font-bold text-xs">Details</button>
         `;
     }
     lucide.createIcons();

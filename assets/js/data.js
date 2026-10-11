@@ -1,7 +1,8 @@
 // assets/js/data.js
 const contactConfig = {
+    name: "Greenland Nursery and Horticulture Services",
     email: "info@greenlandnurseryofficial.com",
-    phone: "+91 99999 88888",
+    phone: "+91 93933 99116",
     address: "7-1, 621/11, beside ESI hospital, BK Guda, Sanjeeva Reddy Nagar, Hyderabad, Telangana 500038, India",
     established: "1985",
     city: "Hyderabad"
@@ -68,21 +69,21 @@ const plantsData = [
 
 const servicesData = [
     {
-        title: "Landscape Design",
+        title: "Horticulture Consult",
         icon: "pen-tool",
-        desc: "Professional balcony and terrace garden design tailored for Hyderabad homes.",
+        desc: "Expert horticulture services for balcony, terrace, and commercial spaces in Hyderabad.",
         price: "₹2,500/-"
     },
     {
         title: "Plant Doctor Clinic",
         icon: "stethoscope",
-        desc: "Facing pest issues or yellow leaves? Get a digital checkup by our experts.",
+        desc: "Professional pest diagnosis and plant health recovery by our senior horticulturists.",
         price: "₹150/-"
     },
     {
-        title: "Potting & Repotting",
+        title: "Soil & Potting",
         icon: "flower2",
-        desc: "We bring premium organic soil to refresh your old plant companions.",
+        desc: "Premium organic soil amendment and repotting services delivered to your doorstep.",
         price: "₹99/-"
     }
 ];

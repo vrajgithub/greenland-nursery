@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Sellers | Greenland Hyderabad</title>
+    <title>Best Sellers | Greenland Nursery & Horticulture Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="assets/css/style.css">
@@ -17,21 +17,27 @@
         }
     </script>
 </head>
-<body class="bg-stone-50 font-sans">
+<body class="bg-stone-50">
 
     <nav class="bg-white p-6 border-b flex justify-between items-center sticky top-0 z-50 shadow-sm">
-        <a href="index.html" class="font-bold text-2xl flex items-center gap-2"><i data-lucide="sprout" class="text-nursery-700"></i> Greenland</a>
-        <a href="index.html" class="text-xs font-bold text-nursery-700 flex items-center gap-2">← Back to Nursery Home</a>
+        <a href="index.html" class="font-bold text-xl flex items-center gap-3">
+            <i data-lucide="sprout" class="text-nursery-700"></i>
+            <span class="font-serif">Greenland Horticulture</span>
+        </a>
+        <div class="flex gap-4 items-center">
+             <a href="tel:9393399116" class="text-xs font-bold text-nursery-700">Call 93933 99116</a>
+             <a href="index.html" class="text-[10px] font-black uppercase tracking-widest text-slate-400">Back</a>
+        </div>
     </nav>
 
-    <header class="py-20 text-center bg-nursery-950 text-white relative overflow-hidden">
-        <span class="text-heritage text-xs font-black uppercase tracking-[0.3em]">Bestsellers Est. 1985</span>
-        <h1 class="text-4xl md:text-5xl font-serif font-bold mt-4 mb-6">Hyderabad's Most Loved Plants</h1>
-        <p class="text-slate-400 text-sm max-w-xl mx-auto">Acclimatized for the Telangana sun and hand-nurtured by our experts since 1985.</p>
+    <header class="py-24 text-center bg-nursery-950 text-white">
+        <span class="text-heritage text-[10px] font-black uppercase tracking-[0.4em]">Est. 1985 Hyderabad</span>
+        <h1 class="text-4xl md:text-6xl font-serif font-bold mt-6 mb-6">Best Selling Flora</h1>
+        <p class="text-slate-400 text-sm max-w-md mx-auto">Top-selling plants across Hyderabad households and commercial spaces.</p>
     </header>
 
-    <main class="max-w-4xl mx-auto py-16 px-6">
-        <div id="top-selling-list" class="space-y-6"></div>
+    <main class="max-w-4xl mx-auto py-20 px-6">
+        <div id="top-selling-list" class="space-y-8"></div>
     </main>
 
     <script src="assets/js/data.js"></script>
@@ -41,16 +47,16 @@
             const sorted = [...plantsData].sort((a, b) => b.salesCount - a.salesCount).slice(0, 10);
             sorted.forEach((plant, index) => {
                 container.innerHTML += `
-                    <div class="flex flex-col md:flex-row items-center gap-8 bg-white p-8 rounded-[2.5rem] border border-stone-200 shadow-sm glass-card hover:shadow-xl transition-all group">
-                        <div class="text-5xl font-serif font-black text-stone-100 group-hover:text-heritage/20 transition-colors">#${index + 1}</div>
-                        <img src="${plant.image}" class="w-32 h-32 object-cover rounded-[2rem] shadow-lg">
+                    <div class="flex flex-col md:flex-row items-center gap-10 bg-white p-10 rounded-[3rem] border border-stone-200 glass-card group">
+                        <div class="text-6xl font-serif font-black text-stone-100 group-hover:text-heritage/20 transition-colors">#${index + 1}</div>
+                        <img src="${plant.image}" class="w-32 h-32 object-cover rounded-[2.5rem] shadow-xl">
                         <div class="flex-grow text-center md:text-left">
-                            <h2 class="text-2xl font-bold text-stone-900">${plant.name}</h2>
-                            <p class="text-xs text-stone-400 mt-1 uppercase font-bold tracking-[0.2em]">${plant.salesCount} Happy Households in Hyderabad</p>
+                            <h2 class="text-3xl font-bold text-stone-900">${plant.name}</h2>
+                            <p class="text-[10px] text-nursery-700 mt-2 uppercase font-black tracking-widest">${plant.salesCount} Happy Households in SR Nagar</p>
                         </div>
                         <div class="text-center md:text-right">
                             <span class="text-[9px] font-bold text-stone-400 uppercase block mb-1">Starting from</span>
-                            <div class="text-2xl font-black text-stone-900">${plant.price}</div>
+                            <div class="text-3xl font-black text-stone-900">${plant.price}</div>
                         </div>
                     </div>
                 `;
