@@ -1,6 +1,66 @@
-<nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-600">
-    <a href="index.html" class="hover:text-nursery-700">Home</a>
-    <a href="top-selling.html" class="text-amber-600 font-bold hover:text-amber-700">🏆 Top 10 Selling</a>
-    <a href="#catalog" class="hover:text-nursery-700">Catalog</a>
-    <!-- ... other links ... -->
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenland Nursery | Home</title>
+    
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-stone-50">
+
+    <nav class="bg-white border-b sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <i data-lucide="sprout" class="text-green-600"></i>
+            <span class="font-bold text-xl">Greenland</span>
+        </div>
+        <div class="flex gap-6 text-sm font-medium items-center">
+            <a href="index.html" class="text-green-700 font-bold">Home</a>
+            <a href="top-selling.html" class="hover:text-green-600">🏆 Top 10 Selling</a>
+            <button class="relative">
+                <i data-lucide="heart" class="w-5 h-5"></i>
+                <span id="wishlist-badge" class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <section id="catalog" class="max-w-7xl mx-auto py-16 px-6">
+        <h2 class="font-['Playfair_Display'] text-3xl font-bold mb-8">Our Full Collection</h2>
+        <div id="plants-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Data Injected Here -->
+        </div>
+    </section>
+
+    <!-- SCRIPTS -->
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        function filterPlants() {
+            const grid = document.getElementById('plants-grid');
+            grid.innerHTML = '';
+            plantsData.forEach(plant => {
+                const isSaved = wishlist.includes(plant.id);
+                grid.innerHTML += `
+                    <div class="bg-white rounded-2xl border p-4 shadow-sm hover:shadow-md transition-all relative plant-card">
+                        <button onclick="toggleWishlist('${plant.id}')" class="absolute top-6 right-6 z-10 bg-white/80 p-2 rounded-full shadow-sm">
+                            <i data-lucide="heart" class="w-4 h-4 ${isSaved ? 'fill-red-500 text-red-500' : 'text-slate-400'}"></i>
+                        </button>
+                        <div class="overflow-hidden rounded-xl mb-4">
+                            <img src="${plant.image}" class="w-full h-48 object-cover plant-img-zoom">
+                        </div>
+                        <h3 class="font-bold text-lg">${plant.name}</h3>
+                        <p class="text-stone-500 text-sm mb-4">${plant.price}</p>
+                    </div>
+                `;
+            });
+            lucide.createIcons();
+        }
+        window.onload = filterPlants;
+    </script>
+</body>
+</html>
