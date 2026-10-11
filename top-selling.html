@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Best Sellers | Greenland Nursery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-stone-50 font-['Plus_Jakarta_Sans']">
+
+    <nav class="p-6 flex justify-between items-center bg-white border-b">
+        <a href="index.html" class="font-['Playfair_Display'] text-2xl font-bold text-green-900">Greenland</a>
+        <a href="index.html" class="text-sm font-bold text-green-700 hover:underline">← Back to Catalog</a>
+    </nav>
+
+    <header class="py-16 px-6 text-center bg-green-900 text-white">
+        <h1 class="font-['Playfair_Display'] text-5xl font-bold mb-4">Our Top 10 Best Sellers</h1>
+        <p class="text-green-200 max-w-xl mx-auto">The most loved plants by our community. These species are hand-picked for their beauty and resilience.</p>
+    </header>
+
+    <main class="max-w-5xl mx-auto py-12 px-6">
+        <div id="top-selling-list" class="space-y-8">
+            <!-- JavaScript will inject ranked items here -->
+        </div>
+    </main>
+
+    <script src="assets/js/data.js"></script>
+    <script>
+        function renderTopSelling() {
+            const container = document.getElementById('top-selling-list');
+            // Sort plants by salesCount descending
+            const sorted = [...plantsData].sort((a, b) => b.salesCount - a.salesCount).slice(0, 10);
+
+            sorted.forEach((plant, index) => {
+                const rank = index + 1;
+                container.innerHTML += `
+                    <div class="flex flex-col md:flex-row gap-8 bg-white p-6 rounded-3xl shadow-sm border border-stone-200 items-center">
+                        <div class="text-5xl font-['Playfair_Display'] font-black text-green-100 md:w-20">#${rank}</div>
+                        <img src="${plant.image}" class="w-full md:w-48 h-48 object-cover rounded-2xl shadow-inner">
+                        <div class="flex-grow text-center md:text-left">
+                            <h2 class="text-2xl font-bold text-stone-900">${plant.name}</h2>
+                            <p class="text-green-700 text-sm italic mb-4">${plant.scientific}</p>
+                            <p class="text-stone-600 mb-4">${plant.description}</p>
+                            <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                                <span class="bg-stone-100 px-3 py-1 rounded-full text-xs font-bold text-stone-500">☀️ ${plant.light}</span>
+                                <span class="bg-green-50 px-3 py-1 rounded-full text-xs font-bold text-green-700">💧 ${plant.watering}</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-stone-900">${plant.price}</div>
+                            <p class="text-[10px] text-stone-400 uppercase tracking-widest">${plant.salesCount} sold this year</p>
+                        </div>
+                    </div>
+                `;
+            });
+            lucide.createIcons();
+        }
+        window.onload = renderTopSelling;
+    </script>
+</body>
+</html>
