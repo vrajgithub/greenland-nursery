@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 5. Dynamic SEO & Meta Tags -->
+    <title>Greenland Nursery | Bring Nature Home</title>
+    <meta name="description" content="Discover hand-cultivated tropical plants, organic soil, and expert gardening advice at Greenland Nursery. Your local sanctuary for healthy flora.">
+    <meta name="keywords" content="nursery, plants, indoor plants, gardening services, succulents, monstera, Greenland Nursery">
+    <meta property="og:title" content="Greenland Nursery | Official Store">
+    <meta property="og:description" content="Vibrant nature and serenity delivered to your space. Explore our curated plant catalog.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1470058869958-2a77ade41c02?auto=format&fit=crop&w=1200&q=630">
+    <meta property="og:url" content="https://vrajgithub.github.io/greenland-nursery/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nursery: { 50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac', 400: '#4ade80', 500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d', 950: '#052e16' },
+                        earth: { 100: '#fdfbf7', 200: '#f4efe6', 300: '#e8dec9', 800: '#4a3b32', 900: '#2c221e' }
+                    },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #16a34a; border-radius: 10px; }
+        .wishlist-count { animation: pop 0.3s ease-out; }
+        @keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.4); } 100% { transform: scale(1); } }
+    </style>
+</head>
+<body class="bg-earth-100 text-slate-800 font-sans antialiased selection:bg-nursery-500 selection:text-white flex flex-col min-h-screen">
+
+    <!-- 2. Seasonal Alert Banner -->
+    <div id="promo-banner" class="bg-nursery-950 text-amber-200 py-2.5 px-4 text-center text-xs font-bold tracking-widest uppercase relative z-50">
+        <span class="flex items-center justify-center gap-2">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            Spring Revival Sale: Get 20% off all Outdoor Shrubs this week!
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+        </span>
+        <button onclick="document.getElementById('promo-banner').remove()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white">
+            <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+    </div>
+
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-nursery-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-nursery-700 to-nursery-500 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                        <i data-lucide="sprout" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-2xl font-bold tracking-tight text-nursery-950 block leading-tight">Greenland</span>
+                        <span class="text-xs font-semibold tracking-widest text-nursery-600 uppercase block -mt-1">Nursery & Flora</span>
+                    </div>
+                </a>
+
+                <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-600">
+                    <a href="#home" class="hover:text-nursery-700 transition-colors py-2">Home</a>
+                    <a href="#quiz" class="hover:text-nursery-700 transition-colors py-2 flex items-center gap-1.5">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i> Plant Finder
+                    </a>
+                    <a href="#catalog" class="hover:text-nursery-700 transition-colors py-2">Catalog</a>
+                    <a href="#services" class="hover:text-nursery-700 transition-colors py-2">Services</a>
+                    <a href="#contact" class="hover:text-nursery-700 transition-colors py-2">Contact</a>
+                </nav>
+
+                <div class="flex items-center gap-4">
+                    <!-- 1. Wishlist Icon -->
+                    <button onclick="toggleWishlistModal()" class="relative p-2.5 rounded-xl bg-earth-200 text-slate-700 hover:bg-nursery-100 hover:text-nursery-700 transition-all">
+                        <i data-lucide="heart" class="w-5 h-5"></i>
+                        <span id="wishlist-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center hidden">0</span>
+                    </button>
+                    <a href="#contact" class="hidden sm:flex px-5 py-2.5 rounded-full bg-nursery-700 hover:bg-nursery-800 text-white font-semibold text-sm shadow-md transition-all active:scale-95">
+                        Visit Nursery
+                    </a>
+                    <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl text-slate-600 hover:bg-nursery-50 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section (Same as previous) -->
+        <section id="home" class="relative overflow-hidden bg-gradient-to-b from-nursery-50/70 via-earth-100 to-white pt-10 pb-20 lg:pt-16 lg:pb-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center lg:text-left">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 space-y-8">
+                        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-nursery-950 leading-tight">
+                            Bring Vibrant Nature Into <span class="italic text-nursery-700 underline decoration-amber-400 decoration-wavy decoration-2">Your Space</span>
+                        </h1>
+                        <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0">
+                            Discover hand-cultivated tropical indoor plants, hearty outdoor shrubs, and organic soil mixes tailored for garden enthusiasts.
+                        </p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="#catalog" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-nursery-700 text-white font-semibold shadow-xl shadow-nursery-700/25 flex items-center justify-center gap-3">
+                                Explore Catalog <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5">
+                         <img src="https://images.unsplash.com/photo-1470058869958-2a77ade41c02?auto=format&fit=crop&w=1000&q=80" alt="Greenhouse" class="rounded-3xl shadow-2xl border-4 border-white">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catalog Section with 3. Enhanced Filtering -->
+        <section id="catalog" class="py-20 bg-earth-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-12">
+                    <h2 class="font-serif text-3xl font-bold text-nursery-950 mb-6">Explore Plant Catalog</h2>
+                    
+                    <!-- New Advanced Filter Bar -->
+                    <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-200 grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="relative">
+                            <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <input type="text" id="plant-search" oninput="filterPlants()" placeholder="Search names..." class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-100 bg-slate-50 text-sm focus:ring-2 focus:ring-nursery-500 outline-none">
+                        </div>
+                        <select id="filter-light" onchange="filterPlants()" class="px-4 py-2.5 rounded-xl border border-slate-100 bg-slate-50 text-sm text-slate-600 outline-none">
+                            <option value="all">Any Light Level</option>
+                            <option value="Low to Medium">Low Light</option>
+                            <option value="Bright Indirect">Bright Indirect</option>
+                            <option value="Full Sun">Direct Sun</option>
+                        </select>
+                        <select id="filter-pet" onchange="filterPlants()" class="px-4 py-2.5 rounded-xl border border-slate-100 bg-slate-50 text-sm text-slate-600 outline-none">
+                            <option value="all">Pet Friendly?</option>
+                            <option value="safe">Yes, Pet Safe</option>
+                            <option value="toxic">Show All</option>
+                        </select>
+                        <div class="flex items-center gap-2 overflow-x-auto pb-1 custom-scrollbar">
+                            <button onclick="setCategory('all')" class="cat-btn active px-4 py-2 rounded-xl text-xs font-bold bg-nursery-700 text-white shrink-0">All</button>
+                            <button onclick="setCategory('indoor')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-50 text-slate-600 shrink-0">Indoor</button>
+                            <button onclick="setCategory('outdoor')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-50 text-slate-600 shrink-0">Outdoor</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="plants-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Testimonials Section -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="font-serif text-3xl font-bold text-nursery-950">What Our Gardeners Say</h2>
+                    <p class="text-slate-500 mt-2">Join 2,000+ happy plant parents in the Greenland community.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-8 rounded-3xl bg-earth-100 relative">
+                        <i data-lucide="quote" class="w-10 h-10 text-nursery-200 absolute top-6 right-6"></i>
+                        <p class="text-slate-600 italic mb-6">"The healthy Monstera I bought last year is now the centerpiece of my living room. Their soil mix is absolute magic!"</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-nursery-600 flex items-center justify-center text-white font-bold">S</div>
+                            <div>
+                                <h4 class="font-bold text-sm">Sarah Jenkins</h4>
+                                <p class="text-xs text-nursery-700">Verified Customer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 rounded-3xl bg-earth-100 relative">
+                        <i data-lucide="quote" class="w-10 h-10 text-nursery-200 absolute top-6 right-6"></i>
+                        <p class="text-slate-600 italic mb-6">"Best nursery in the valley. The staff spent 20 minutes helping me find the perfect low-light plant for my dark office."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-nursery-600 flex items-center justify-center text-white font-bold">M</div>
+                            <div>
+                                <h4 class="font-bold text-sm">Marcus Chen</h4>
+                                <p class="text-xs text-nursery-700">Collector</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 rounded-3xl bg-earth-100 relative">
+                        <i data-lucide="quote" class="w-10 h-10 text-nursery-200 absolute top-6 right-6"></i>
+                        <p class="text-slate-600 italic mb-6">"I appreciate that they tag everything for pet safety. As a cat owner, it makes shopping so much less stressful."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-nursery-600 flex items-center justify-center text-white font-bold">L</div>
+                            <div>
+                                <h4 class="font-bold text-sm">Lisa Rodriguez</h4>
+                                <p class="text-xs text-nursery-700">Local Resident</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Wishlist Modal -->
+    <div id="wishlist-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-end">
+        <div class="bg-white h-full w-full max-w-md shadow-2xl flex flex-col">
+            <div class="p-6 border-b flex items-center justify-between bg-nursery-50">
+                <h3 class="font-bold text-xl flex items-center gap-2">
+                    <i data-lucide="heart" class="text-red-500 fill-current"></i> My Plant Wishlist
+                </h3>
+                <button onclick="toggleWishlistModal()" class="p-2 hover:bg-white rounded-full transition-colors"><i data-lucide="x"></i></button>
+            </div>
+            <div id="wishlist-items" class="flex-grow overflow-y-auto p-6 space-y-4 custom-scrollbar">
+                <!-- Wishlist items here -->
+            </div>
+            <div class="p-6 border-t bg-slate-50">
+                <button onclick="window.location.href='#contact'; toggleWishlistModal();" class="w-full py-4 rounded-2xl bg-nursery-700 text-white font-bold shadow-lg">Inquire About My List</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div id="plant-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative custom-scrollbar">
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <div id="modal-content" class="p-6 sm:p-8"></div>
+        </div>
+    </div>
+
+    <footer class="bg-nursery-950 text-slate-300 pt-16 pb-12 border-t border-nursery-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-nursery-900">
+                <div class="md:col-span-2">
+                    <div class="flex items-center justify-center sm:justify-start gap-3 mb-4">
+                        <i data-lucide="sprout" class="w-8 h-8 text-nursery-500"></i>
+                        <span class="font-serif text-2xl font-bold text-white">Greenland Nursery</span>
+                    </div>
+                    <p class="text-slate-400 text-sm max-w-sm">Premier local sanctuary for healthy plants, organic soil, and botanical guidance.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">Links</h4>
+                    <ul class="text-sm space-y-2">
+                        <li><a href="#catalog" class="hover:text-amber-300">Catalog</a></li>
+                        <li><a href="#services" class="hover:text-amber-300">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">Contact</h4>
+                    <p class="text-xs text-slate-400">hello@greenlandnurseryofficial.com</p>
+                    <p class="text-xs text-slate-400 mt-2">450 Botanical Grove Way</p>
+                </div>
+            </div>
+            <p class="pt-8 text-[10px] text-slate-500 uppercase tracking-widest">&copy; 2026 Greenland Nursery. Official Site.</p>
+        </div>
+    </footer>
+
+    <script>
+        const plantsData = [
+            { id: '1', name: 'Monstera Deliciosa', scientific: 'Monstera deliciosa', category: 'indoor', price: '$34.99', difficulty: 'Easy Care', light: 'Bright Indirect', watering: 'Weekly', petFriendly: false, image: 'https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=800&q=80', description: 'Famous for its distinctive leaf split fenestrations.' },
+            { id: '2', name: 'Fiddle Leaf Fig', scientific: 'Ficus lyrata', category: 'indoor', price: '$49.99', difficulty: 'Intermediate', light: 'Bright Light', watering: 'Weekly', petFriendly: false, image: 'https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=800&q=80', description: 'Bold, architectural violin-shaped leaves.' },
+            { id: '3', name: 'Snake Plant', scientific: 'Sansevieria', category: 'indoor', price: '$24.99', difficulty: 'Beginner', light: 'Low to Medium', watering: 'Bi-weekly', petFriendly: false, image: 'https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=800&q=80', description: 'Extremely resilient and air purifying.' },
+            { id: '4', name: 'Peace Lily', scientific: 'Spathiphyllum', category: 'indoor', price: '$29.99', difficulty: 'Beginner', light: 'Low to Medium', watering: 'Weekly', petFriendly: false, image: 'https://images.unsplash.com/photo-1593691509543-c55fb32e7355?auto=format&fit=crop&w=800&q=80', description: 'Elegance with white spathe flowers.' },
+            { id: '5', name: 'Echeveria', scientific: 'Echeveria elegans', category: 'indoor', price: '$12.99', difficulty: 'Easy Care', light: 'Full Sun', watering: 'Bi-weekly', petFriendly: true, image: 'https://images.unsplash.com/photo-1520302638595-21436ee014ac?auto=format&fit=crop&w=800&q=80', description: 'Rosette-forming succulent in pastel hues.' },
+            { id: '6', name: 'French Lavender', scientific: 'Lavandula', category: 'outdoor', price: '$22.50', difficulty: 'Easy Care', light: 'Full Sun', watering: 'Weekly', petFriendly: true, image: 'https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&w=800&q=80', description: 'Fragrant perennial with soothing purple blooms.' },
+            { id: '7', name: 'Red Maple', scientific: 'Acer palmatum', category: 'outdoor', price: '$89.00', difficulty: 'Intermediate', light: 'Full Sun', watering: 'Regular', petFriendly: true, image: 'https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=800&q=80', description: 'Stunning ornamental outdoor tree.' }
+        ];
+
+        let activeCategory = 'all';
+        let wishlist = JSON.parse(localStorage.getItem('greenland_wishlist')) || [];
+
+        function renderPlants(data) {
+            const grid = document.getElementById('plants-grid');
+            grid.innerHTML = '';
+            data.forEach(plant => {
+                const isWishlisted = wishlist.includes(plant.id);
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all flex flex-col group relative";
+                card.innerHTML = `
+                    <button onclick="toggleWishlist('${plant.id}')" class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-white/90 shadow-md flex items-center justify-center text-slate-400 hover:text-red-500 transition-colors">
+                        <i data-lucide="heart" class="w-5 h-5 ${isWishlisted ? 'fill-red-500 text-red-500' : ''}"></i>
+                    </button>
+                    <div class="h-52 overflow-hidden">
+                        <img src="${plant.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-grow">
+                        <span class="text-[10px] font-bold text-nursery-600 uppercase tracking-widest">${plant.category}</span>
+                        <h3 class="font-bold text-slate-900">${plant.name}</h3>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="font-serif font-bold text-lg text-nursery-950">${plant.price}</span>
+                            <button onclick="openModal('${plant.id}')" class="p-2 rounded-lg bg-earth-100 hover:bg-nursery-700 hover:text-white transition-colors">
+                                <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            updateWishlistUI();
+            lucide.createIcons();
+        }
+
+        function filterPlants() {
+            const query = document.getElementById('plant-search').value.toLowerCase();
+            const light = document.getElementById('filter-light').value;
+            const pet = document.getElementById('filter-pet').value;
+
+            const filtered = plantsData.filter(plant => {
+                const matchesSearch = plant.name.toLowerCase().includes(query);
+                const matchesCat = activeCategory === 'all' || plant.category === activeCategory;
+                const matchesLight = light === 'all' || plant.light.includes(light);
+                const matchesPet = pet === 'all' || (pet === 'safe' ? plant.petFriendly : true);
+                return matchesSearch && matchesCat && matchesLight && matchesPet;
+            });
+            renderPlants(filtered);
+        }
+
+        function setCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-nursery-700', 'text-white');
+                btn.classList.add('bg-slate-50', 'text-slate-600');
+            });
+            event.target.classList.add('bg-nursery-700', 'text-white');
+            filterPlants();
+        }
+
+        // Wishlist Logic
+        function toggleWishlist(id) {
+            if (wishlist.includes(id)) {
+                wishlist = wishlist.filter(item => item !== id);
+            } else {
+                wishlist.push(id);
+            }
+            localStorage.setItem('greenland_wishlist', JSON.stringify(wishlist));
+            renderPlants(plantsData); // Re-render current view
+        }
+
+        function updateWishlistUI() {
+            const badge = document.getElementById('wishlist-badge');
+            const container = document.getElementById('wishlist-items');
+            
+            badge.innerText = wishlist.length;
+            badge.classList.toggle('hidden', wishlist.length === 0);
+            badge.classList.add('wishlist-count');
+            setTimeout(() => badge.classList.remove('wishlist-count'), 300);
+
+            container.innerHTML = wishlist.length === 0 ? '<p class="text-center text-slate-400 py-10">Your wishlist is empty.</p>' : '';
+            
+            wishlist.forEach(id => {
+                const plant = plantsData.find(p => p.id === id);
+                if (plant) {
+                    container.innerHTML += `
+                        <div class="flex items-center gap-4 bg-earth-100 p-3 rounded-2xl border border-earth-200">
+                            <img src="${plant.image}" class="w-16 h-16 rounded-xl object-cover">
+                            <div class="flex-grow">
+                                <h4 class="font-bold text-sm">${plant.name}</h4>
+                                <p class="text-xs text-nursery-700">${plant.price}</p>
+                            </div>
+                            <button onclick="toggleWishlist('${plant.id}')" class="text-slate-300 hover:text-red-500"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                        </div>
+                    `;
+                }
+            });
+            lucide.createIcons();
+        }
+
+        function toggleWishlistModal() {
+            document.getElementById('wishlist-modal').classList.toggle('hidden');
+        }
+
+        function openModal(id) {
+            const plant = plantsData.find(p => p.id === id);
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="grid md:grid-cols-2 gap-8">
+                    <img src="${plant.image}" class="rounded-2xl w-full h-64 md:h-full object-cover">
+                    <div class="space-y-4">
+                        <h2 class="font-serif text-3xl font-bold">${plant.name}</h2>
+                        <p class="text-sm text-slate-500 italic">${plant.scientific}</p>
+                        <p class="text-slate-600 text-sm">${plant.description}</p>
+                        <div class="bg-earth-100 p-4 rounded-2xl grid grid-cols-2 gap-4 text-xs font-bold">
+                            <div class="text-slate-500">SUN: <span class="text-slate-800">${plant.light}</span></div>
+                            <div class="text-slate-500">PETS: <span class="text-slate-800">${plant.petFriendly ? 'SAFE' : 'TOXIC'}</span></div>
+                        </div>
+                        <div class="pt-4 flex items-center justify-between">
+                            <span class="text-2xl font-serif font-bold">${plant.price}</span>
+                            <button onclick="toggleWishlist('${plant.id}'); closeModal();" class="px-6 py-3 rounded-xl border border-nursery-700 text-nursery-700 font-bold hover:bg-nursery-700 hover:text-white transition-all">
+                                ${wishlist.includes(plant.id) ? 'Remove' : 'Save to Wishlist'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('plant-modal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeModal() { document.getElementById('plant-modal').classList.add('hidden'); }
+
+        window.onload = () => { renderPlants(plantsData); lucide.createIcons(); };
+    </script>
+</body>
+</html>
